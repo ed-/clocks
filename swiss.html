@@ -1,25 +1,31 @@
 <html>
 <head>
-<title>Clock</title>
+<title>swiss</title>
 <script type="text/javascript">
 function draw(){
     var now = new Date();
     var hours = now.getHours() % 12;
     var minutes = now.getMinutes();
-    var seconds = now.getSeconds() + (now.getMilliseconds() / 1000.0);
+    var seconds = now.getSeconds();
+    var milliseconds = now.getMilliseconds();
 
-    var hRot = (hours + (minutes / 60.0) + (seconds / 3600.0)) * 30;
-    var mRot = (minutes + (seconds / 60.0)) * 6;
-    var sRot = seconds * 6;
+    var LEDs = document.getElementsByClassName("LED");
+    [].forEach.call(LEDs, function(LED){
+        if (eval(LED.attributes.led.value)) {
+          LED.style.opacity = ON;
+        } else {
+          LED.style.opacity = OFF;
+        }
+    });
 
-    var hourHand = document.getElementById("hourhand");
-    hourHand.setAttribute("transform", "rotate(" + hRot + " 0.5 0.5)");
-
-    var minuteHand = document.getElementById("minutehand");
-    minuteHand.setAttribute("transform", "rotate(" + mRot + " 0.5 0.5)");
-
-    var secondHand = document.getElementById("secondhand");
-    secondHand.setAttribute("transform", "rotate(" + sRot + " 0.5 0.5)");
+    var SPINs = document.getElementsByClassName("SPIN");
+    [].forEach.call(SPINs, function(SPIN){
+        var rot = eval(SPIN.attributes.spin.value);
+        var x = eval(SPIN.attributes.spinx.value);
+        var y = eval(SPIN.attributes.spiny.value);
+        var transform = "rotate(" + rot + " " + x + " " + y + ")";
+        SPIN.setAttribute("transform", transform);
+    });
 
     var pad = '';
     if (minutes < 10) {
@@ -75,9 +81,23 @@ window.setInterval(draw, millisecondsPerFrame);
     <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" transform="rotate(300 0.5 0.5)" />
     <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" transform="rotate(330 0.5 0.5)" />
 
-    <rect id="minutehand" x="0.49" y="0.07" width="0.02" height="0.5" />
-    <rect id="hourhand" x="0.49" y="0.17" width="0.02" height="0.4" />
-    <g id="secondhand" fill="#c00">
+    <rect
+     class="SPIN"
+     SPIN="(minutes + (seconds / 60.0)) * 6"
+     SPINX="0.5" SPINY="0.5"
+     x="0.49" y="0.07" width="0.02" height="0.5" />
+
+    <rect
+     class="SPIN"
+     SPIN="(hours + (minutes / 60.0) + (seconds / 3600.0)) * 30"
+     SPINX="0.5" SPINY="0.5"
+     x="0.49" y="0.17" width="0.02" height="0.4" />
+
+    <g
+     class="SPIN"
+     SPIN="(seconds + (milliseconds / 1000.0)) * 6"
+     SPINX="0.5" SPINY="0.5"
+     fill="#c00">
         <rect id="" x="0.49" y="0.14" width="0.02" height="0.43" />
         <circle cx="0.5" cy="0.1" r="0.05" />
     </g>

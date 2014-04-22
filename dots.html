@@ -1,0 +1,147 @@
+<html>
+<head>
+<title>Clock</title>
+<script type="text/javascript">
+function draw(){
+    var now = new Date();
+    var hours = now.getHours() % 12;
+    var minutes = now.getMinutes();
+    var seconds = now.getSeconds();
+    
+    var ON = 1.0;
+    var OFF = 0.25;
+
+    var dot = document.getElementById("hour6");
+    if((hours % 12) >= 6){
+      dot.style.opacity = ON;
+    } else {
+      dot.style.opacity = OFF;
+    }
+
+    var dot = document.getElementById("hour3");
+    if((hours % 6) >= 3){
+      dot.style.opacity = ON;
+    } else {
+      dot.style.opacity = OFF;
+    }
+
+    var dot = document.getElementById("hour1a");
+    if((hours % 3) == 2){
+      dot.style.opacity = ON;
+    } else {
+      dot.style.opacity = OFF;
+    }
+
+    var dot = document.getElementById("hour1b");
+    if((hours % 3) == 1){
+      dot.style.opacity = ON;
+    } else {
+      dot.style.opacity = OFF;
+    }
+
+    var dot = document.getElementById("min30");
+    if((minutes % 60) >= 30){
+      dot.style.opacity = ON;
+    } else {
+      dot.style.opacity = OFF;
+    }
+
+    var dot = document.getElementById("min15");
+    if((minutes % 30) >= 15){
+      dot.style.opacity = ON;
+    } else {
+      dot.style.opacity = OFF;
+    }
+
+    var dot = document.getElementById("min5a");
+    if((minutes % 15) >= 10){
+      dot.style.opacity = ON;
+    } else {
+      dot.style.opacity = OFF;
+    }
+
+    var dot = document.getElementById("min5b");
+    if((minutes % 15) >= 5){
+      dot.style.opacity = ON;
+    } else {
+      dot.style.opacity = OFF;
+    }
+
+    var dot = document.getElementById("min1a");
+    if((minutes % 5) == 4){
+      dot.style.opacity = ON;
+    } else {
+      dot.style.opacity = OFF;
+    }
+
+    var dot = document.getElementById("min1b");
+    if((minutes % 5) >= 3){
+      dot.style.opacity = ON;
+    } else {
+      dot.style.opacity = OFF;
+    }
+
+    var dot = document.getElementById("min1c");
+    if((minutes % 5) >= 2){
+      dot.style.opacity = ON;
+    } else {
+      dot.style.opacity = OFF;
+    }
+
+    var dot = document.getElementById("min1d");
+    if((minutes % 5) >= 1){
+      dot.style.opacity = ON;
+    } else {
+      dot.style.opacity = OFF;
+    }
+
+    var pad = '';
+    if (minutes < 10) {
+        pad = '0';
+    }
+
+    document.title = (hours + ':' + pad + minutes);
+}
+
+var FPS = 60;
+var millisecondsPerFrame = 1000.0 / FPS;
+window.setInterval(draw, millisecondsPerFrame);
+
+</script>
+</head>
+<body bgcolor="#000"><center>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     version="1.1"
+
+     width="90%" height="90%"
+     viewBox="0 0 1 1"
+
+     style="stroke-linejoin:miter;
+            stroke:none;
+            stroke-width:1px;
+            fill:#000;
+            " >
+
+    <g fill="#600">
+        <circle id="hour6" cx="0.125" cy="0.25" r="0.1125" />
+        <circle id="hour3" cx="0.375" cy="0.25" r="0.1125" />
+        <circle id="hour1a" cx="0.625" cy="0.25" r="0.1125" />
+        <circle id="hour1b" cx="0.875" cy="0.25" r="0.1125" />
+    </g>
+    <g fill="#630">
+        <circle id="min30" cx="0.125" cy="0.5" r="0.1125" />
+        <circle id="min15" cx="0.375" cy="0.5" r="0.1125" />
+        <circle id="min5a" cx="0.625" cy="0.5" r="0.1125" />
+        <circle id="min5b" cx="0.875" cy="0.5" r="0.1125" />
+    </g>
+    <g fill="#060">
+        <circle id="min1a" cx="0.125" cy="0.75" r="0.1125" />
+        <circle id="min1b" cx="0.375" cy="0.75" r="0.1125" />
+        <circle id="min1c" cx="0.625" cy="0.75" r="0.1125" />
+        <circle id="min1d" cx="0.875" cy="0.75" r="0.1125" />
+    </g>
+
+</svg>
+</center></body>
+</html>

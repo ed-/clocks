@@ -5,13 +5,14 @@ function draw(){
   var seconds = now.getSeconds();
   var milliseconds = now.getMilliseconds();
 
-  var ON = 1.0;
-  var OFF = 0.125;
-
   var LEDs = document.getElementsByClassName("LED");
   [].forEach.call(LEDs, function(LED){
+    var OFF = 0;
+    if(LED.hasAttribute('ledoff')){
+      OFF = eval(LED.attributes.ledoff.value);
+    }
     if (eval(LED.attributes.led.value)){
-      LED.style.opacity = ON;
+      LED.style.opacity = 1;
     } else {
       LED.style.opacity = OFF;
     }

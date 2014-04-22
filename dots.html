@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Clock</title>
+<title>dots</title>
 <script type="text/javascript">
 function draw(){
     var now = new Date();
@@ -11,89 +11,14 @@ function draw(){
     var ON = 1.0;
     var OFF = 0.25;
 
-    var dot = document.getElementById("hour6");
-    if((hours % 12) >= 6){
-      dot.style.opacity = ON;
-    } else {
-      dot.style.opacity = OFF;
-    }
-
-    var dot = document.getElementById("hour3");
-    if((hours % 6) >= 3){
-      dot.style.opacity = ON;
-    } else {
-      dot.style.opacity = OFF;
-    }
-
-    var dot = document.getElementById("hour1a");
-    if((hours % 3) == 2){
-      dot.style.opacity = ON;
-    } else {
-      dot.style.opacity = OFF;
-    }
-
-    var dot = document.getElementById("hour1b");
-    if((hours % 3) == 1){
-      dot.style.opacity = ON;
-    } else {
-      dot.style.opacity = OFF;
-    }
-
-    var dot = document.getElementById("min30");
-    if((minutes % 60) >= 30){
-      dot.style.opacity = ON;
-    } else {
-      dot.style.opacity = OFF;
-    }
-
-    var dot = document.getElementById("min15");
-    if((minutes % 30) >= 15){
-      dot.style.opacity = ON;
-    } else {
-      dot.style.opacity = OFF;
-    }
-
-    var dot = document.getElementById("min5a");
-    if((minutes % 15) >= 10){
-      dot.style.opacity = ON;
-    } else {
-      dot.style.opacity = OFF;
-    }
-
-    var dot = document.getElementById("min5b");
-    if((minutes % 15) >= 5){
-      dot.style.opacity = ON;
-    } else {
-      dot.style.opacity = OFF;
-    }
-
-    var dot = document.getElementById("min1a");
-    if((minutes % 5) == 4){
-      dot.style.opacity = ON;
-    } else {
-      dot.style.opacity = OFF;
-    }
-
-    var dot = document.getElementById("min1b");
-    if((minutes % 5) >= 3){
-      dot.style.opacity = ON;
-    } else {
-      dot.style.opacity = OFF;
-    }
-
-    var dot = document.getElementById("min1c");
-    if((minutes % 5) >= 2){
-      dot.style.opacity = ON;
-    } else {
-      dot.style.opacity = OFF;
-    }
-
-    var dot = document.getElementById("min1d");
-    if((minutes % 5) >= 1){
-      dot.style.opacity = ON;
-    } else {
-      dot.style.opacity = OFF;
-    }
+    var LEDs = document.getElementsByClassName("LED");
+    [].forEach.call(LEDs, function(LED){
+        if (eval(LED.attributes.led.value)) {
+          LED.style.opacity = ON;
+        } else {
+          LED.style.opacity = OFF;
+        }
+    });
 
     var pad = '';
     if (minutes < 10) {
@@ -124,22 +49,22 @@ window.setInterval(draw, millisecondsPerFrame);
             " >
 
     <g fill="#600">
-        <circle id="hour6" cx="0.125" cy="0.25" r="0.1125" />
-        <circle id="hour3" cx="0.375" cy="0.25" r="0.1125" />
-        <circle id="hour1a" cx="0.625" cy="0.25" r="0.1125" />
-        <circle id="hour1b" cx="0.875" cy="0.25" r="0.1125" />
+        <circle class="LED" LED="hours % 12 >= 6" cx="0.125" cy="0.25" r="0.1125" />
+        <circle class="LED" LED="hours % 6 >= 3" cx="0.375" cy="0.25" r="0.1125" />
+        <circle class="LED" LED="hours % 3 == 2" cx="0.625" cy="0.25" r="0.1125" />
+        <circle class="LED" LED="hours % 3 == 1" cx="0.875" cy="0.25" r="0.1125" />
     </g>
     <g fill="#630">
-        <circle id="min30" cx="0.125" cy="0.5" r="0.1125" />
-        <circle id="min15" cx="0.375" cy="0.5" r="0.1125" />
-        <circle id="min5a" cx="0.625" cy="0.5" r="0.1125" />
-        <circle id="min5b" cx="0.875" cy="0.5" r="0.1125" />
+        <circle class="LED" LED="minutes % 60 >= 30" cx="0.125" cy="0.5" r="0.1125" />
+        <circle class="LED" LED="minutes % 30 >= 15" cx="0.375" cy="0.5" r="0.1125" />
+        <circle class="LED" LED="minutes % 15 >= 10" cx="0.625" cy="0.5" r="0.1125" />
+        <circle class="LED" LED="minutes % 15 >= 5" cx="0.875" cy="0.5" r="0.1125" />
     </g>
     <g fill="#060">
-        <circle id="min1a" cx="0.125" cy="0.75" r="0.1125" />
-        <circle id="min1b" cx="0.375" cy="0.75" r="0.1125" />
-        <circle id="min1c" cx="0.625" cy="0.75" r="0.1125" />
-        <circle id="min1d" cx="0.875" cy="0.75" r="0.1125" />
+        <circle class="LED" LED="minutes % 5 == 4" cx="0.125" cy="0.75" r="0.1125" />
+        <circle class="LED" LED="minutes % 5 >= 3" cx="0.375" cy="0.75" r="0.1125" />
+        <circle class="LED" LED="minutes % 5 >= 2" cx="0.625" cy="0.75" r="0.1125" />
+        <circle class="LED" LED="minutes % 5 >= 1" cx="0.875" cy="0.75" r="0.1125" />
     </g>
 
 </svg>

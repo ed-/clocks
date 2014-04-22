@@ -5,6 +5,9 @@ function draw(){
   var seconds = now.getSeconds();
   var milliseconds = now.getMilliseconds();
 
+  var ON = 1.0;
+  var OFF = 0.125;
+
   var LEDs = document.getElementsByClassName("LED");
   [].forEach.call(LEDs, function(LED){
     if (eval(LED.attributes.led.value)){

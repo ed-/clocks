@@ -1,0 +1,104 @@
+<html>
+  <head>
+    <title>lockward</title>
+    <script type="text/javascript" src="ticktock.js"></script>
+  </head>
+  <body>
+    <center>
+      <svg xmlns="http://www.w3.org/2000/svg"
+       xmlns:xlink="http://www.w3.org/1999/xlink"
+       version="1.1"
+
+       width="90%" height="90%"
+       viewBox="0 0 1 1"
+
+       style="stroke-linejoin:miter;
+              stroke:none;
+              stroke-width:1px;
+              fill:#000;
+             " >
+        <defs>
+          <symbol id="lock" width="1" height="1" viewbox="0 0 1 1" opacity="0.333" >
+            <path d="M 0.629 0.017
+                     A 0.5 0.5 0 0 1 0.853 0.147
+                     L 0.783 0.217
+                     A 0.4 0.4 0 0 0 0.604 0.114
+                     Z" />
+            <path d="M 0.629 0.017
+                     A 0.5 0.5 0 0 1 0.853 0.147
+                     L 0.783 0.217
+                     A 0.4 0.4 0 0 0 0.604 0.114
+                     Z" transform="rotate(120 0.5 0.5)" />
+            <path d="M 0.629 0.017
+                     A 0.5 0.5 0 0 1 0.853 0.147
+                     L 0.783 0.217
+                     A 0.4 0.4 0 0 0 0.604 0.114
+                     Z" transform="rotate(240 0.5 0.5)" />
+
+            <path d="M 0.783 0.217
+                     A 0.4 0.4 0 0 1 0.886 0.396
+                     L 0.983 0.370
+                     A 0.5 0.5 0 0 1 0.983 0.629
+                     L 0.790 0.578
+                     A 0.3 0.3 0 0 0 0.712 0.288
+                     Z" />
+            <path d="M 0.783 0.217
+                     A 0.4 0.4 0 0 1 0.886 0.396
+                     L 0.983 0.370
+                     A 0.5 0.5 0 0 1 0.983 0.629
+                     L 0.790 0.578
+                     A 0.3 0.3 0 0 0 0.712 0.288
+                     Z" transform="rotate(240 0.5 0.5)" />
+
+            <path d="M 0.790 0.578
+                     A 0.3 0.3 0 0 1 0.578 0.790
+                     L 0.604 0.886
+                     A 0.4 0.4 0 0 1 0.396 0.886
+                     L 0.370 0.983
+                     A 0.5 0.5 0 0 1 0.147 0.853
+                     L 0.359 0.641
+                     A 0.2 0.2 0 0 0 0.693 0.552
+                     Z" />
+
+            <path d="M 0.359 0.641
+                     A 0.2 0.2 0 0 1 0.448 0.307
+                     L 0.422 0.210
+                     A 0.3 0.3 0 0 1 0.578 0.210
+                     L 0.526 0.403
+                     A 0.1 0.1 0 0 0 0.429 0.571
+                     Z" />
+          </symbol>
+
+        </defs>
+
+        <g
+         class="SPIN"
+         SPIN="(hours + (minutes / 60.0) + (seconds / 3600.0)) * 30"
+         SPINX="0.5" SPINY="0.5"
+         fill="#0ff">
+          <use x="0" y="0" width="1" height="1" xlink:href="#lock" />
+        </g>
+
+        <g
+         class="SPIN"
+         SPIN="(minutes + (seconds / 60.0)) * 6"
+         SPINX="0.5" SPINY="0.5"
+         fill="#f0f">
+          <use x="0" y="0" width="1" height="1" xlink:href="#lock" />
+        </g>
+
+        <g
+         class="SPIN"
+         SPIN="(seconds + (milliseconds / 1000.0)) * 6"
+         SPINX="0.5" SPINY="0.5"
+         fill="#ff0">
+          <use x="0" y="0" width="1" height="1" xlink:href="#lock" />
+        </g>
+
+      </svg>
+    </center>
+    <script type="text/javascript">
+      start(60);
+    </script>
+  </body>
+</html>

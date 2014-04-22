@@ -1,106 +1,72 @@
 <html>
-<head>
-<title>swiss</title>
-<script type="text/javascript">
-function draw(){
-    var now = new Date();
-    var hours = now.getHours() % 12;
-    var minutes = now.getMinutes();
-    var seconds = now.getSeconds();
-    var milliseconds = now.getMilliseconds();
+  <head>
+    <title>swiss</title>
+    <script type="text/javascript" src="ticktock.js"></script>
+  </head>
+  <body>
+    <center>
+      <svg xmlns="http://www.w3.org/2000/svg"
+       xmlns:xlink="http://www.w3.org/1999/xlink"
+       version="1.1"
 
-    var LEDs = document.getElementsByClassName("LED");
-    [].forEach.call(LEDs, function(LED){
-        if (eval(LED.attributes.led.value)) {
-          LED.style.opacity = ON;
-        } else {
-          LED.style.opacity = OFF;
-        }
-    });
+       width="90%" height="90%"
+       viewBox="0 0 1 1"
 
-    var SPINs = document.getElementsByClassName("SPIN");
-    [].forEach.call(SPINs, function(SPIN){
-        var rot = eval(SPIN.attributes.spin.value);
-        var x = eval(SPIN.attributes.spinx.value);
-        var y = eval(SPIN.attributes.spiny.value);
-        var transform = "rotate(" + rot + " " + x + " " + y + ")";
-        SPIN.setAttribute("transform", transform);
-    });
-
-    var pad = '';
-    if (minutes < 10) {
-        pad = '0';
-    }
-
-    document.title = (hours + ':' + pad + minutes);
-}
-
-var FPS = 60;
-var millisecondsPerFrame = 1000.0 / FPS;
-window.setInterval(draw, millisecondsPerFrame);
-
-</script>
-</head>
-<body><center>
-<svg xmlns="http://www.w3.org/2000/svg"
-     xmlns:xlink="http://www.w3.org/1999/xlink"
-     version="1.1"
-
-     width="90%" height="90%"
-     viewBox="0 0 1 1"
-
-     style="stroke-linejoin:miter;
-            stroke:none;
-            stroke-width:1px;
-            fill:#000;
-            " >
-
-    <defs>
-        <symbol id="Iiiii" width="1" height="1" viewbox="0 0 1 1">
+       style="stroke-linejoin:miter;
+              stroke:none;
+              stroke-width:1px;
+              fill:#000;
+             " >
+        <defs>
+          <symbol id="Iiiii" width="1" height="1" viewbox="0 0 1 1">
             <rect x="0.49" y="0.02" width="0.02" height="0.11" />
             <rect x="0.495" y="0.02" width="0.01" height="0.04" transform="rotate(  6 0.5 0.5)"/>
             <rect x="0.495" y="0.02" width="0.01" height="0.04" transform="rotate( 12 0.5 0.5)"/>
             <rect x="0.495" y="0.02" width="0.01" height="0.04" transform="rotate( 18 0.5 0.5)"/>
             <rect x="0.495" y="0.02" width="0.01" height="0.04" transform="rotate( 24 0.5 0.5)"/>
-        </symbol>
+          </symbol>
+        </defs>
 
-    </defs>
+        <circle id="bezel" cx="0.5" cy="0.5" r="0.5" />
+        <circle id="dial" cx="0.5" cy="0.5" r="0.49" fill="#fff" />
 
-    <circle id="bezel" cx="0.5" cy="0.5" r="0.5" />
-    <circle id="dial" cx="0.5" cy="0.5" r="0.49" fill="#fff" />
-    <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" />
-    <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" transform="rotate( 30 0.5 0.5)" />
-    <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" transform="rotate( 60 0.5 0.5)" />
-    <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" transform="rotate( 90 0.5 0.5)" />
-    <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" transform="rotate(120 0.5 0.5)" />
-    <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" transform="rotate(150 0.5 0.5)" />
-    <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" transform="rotate(180 0.5 0.5)" />
-    <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" transform="rotate(210 0.5 0.5)" />
-    <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" transform="rotate(240 0.5 0.5)" />
-    <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" transform="rotate(270 0.5 0.5)" />
-    <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" transform="rotate(300 0.5 0.5)" />
-    <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" transform="rotate(330 0.5 0.5)" />
+        <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" />
+        <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" transform="rotate( 30 0.5 0.5)" />
+        <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" transform="rotate( 60 0.5 0.5)" />
+        <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" transform="rotate( 90 0.5 0.5)" />
+        <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" transform="rotate(120 0.5 0.5)" />
+        <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" transform="rotate(150 0.5 0.5)" />
+        <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" transform="rotate(180 0.5 0.5)" />
+        <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" transform="rotate(210 0.5 0.5)" />
+        <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" transform="rotate(240 0.5 0.5)" />
+        <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" transform="rotate(270 0.5 0.5)" />
+        <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" transform="rotate(300 0.5 0.5)" />
+        <use x="0" y="0" width="1" height="1" xlink:href="#Iiiii" transform="rotate(330 0.5 0.5)" />
 
-    <rect
-     class="SPIN"
-     SPIN="(minutes + (seconds / 60.0)) * 6"
-     SPINX="0.5" SPINY="0.5"
-     x="0.49" y="0.07" width="0.02" height="0.5" />
+        <rect
+         class="SPIN"
+         SPIN="(minutes + (seconds / 60.0)) * 6"
+         SPINX="0.5" SPINY="0.5"
+         x="0.49" y="0.07" width="0.02" height="0.5" />
 
-    <rect
-     class="SPIN"
-     SPIN="(hours + (minutes / 60.0) + (seconds / 3600.0)) * 30"
-     SPINX="0.5" SPINY="0.5"
-     x="0.49" y="0.17" width="0.02" height="0.4" />
+        <rect
+         class="SPIN"
+         SPIN="(hours + (minutes / 60.0) + (seconds / 3600.0)) * 30"
+         SPINX="0.5" SPINY="0.5"
+         x="0.49" y="0.17" width="0.02" height="0.4" />
 
-    <g
-     class="SPIN"
-     SPIN="(seconds + (milliseconds / 1000.0)) * 6"
-     SPINX="0.5" SPINY="0.5"
-     fill="#c00">
-        <rect id="" x="0.49" y="0.14" width="0.02" height="0.43" />
-        <circle cx="0.5" cy="0.1" r="0.05" />
-    </g>
-</svg>
-</center></body>
+        <g
+         class="SPIN"
+         SPIN="(seconds + (milliseconds / 1000.0)) * 6"
+         SPINX="0.5" SPINY="0.5"
+         fill="#c00">
+          <rect id="" x="0.49" y="0.14" width="0.02" height="0.43" />
+          <circle cx="0.5" cy="0.1" r="0.05" />
+        </g>
+      </svg>
+    </center>
+    <script type="text/javascript">
+      start(60);
+    </script>
+  </body>
 </html>

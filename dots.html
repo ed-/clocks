@@ -1,72 +1,45 @@
 <html>
-<head>
-<title>dots</title>
-<script type="text/javascript">
-function draw(){
-    var now = new Date();
-    var hours = now.getHours() % 12;
-    var minutes = now.getMinutes();
-    var seconds = now.getSeconds();
-    
-    var ON = 1.0;
-    var OFF = 0.25;
+  <head>
+    <title>dots</title>
+    <script type="text/javascript" src="ticktock.js"></script>
+  </head>
+  <body bgcolor="#000">
+    <center>
+      <svg xmlns="http://www.w3.org/2000/svg"
+       xmlns:xlink="http://www.w3.org/1999/xlink"
+       version="1.1"
 
-    var LEDs = document.getElementsByClassName("LED");
-    [].forEach.call(LEDs, function(LED){
-        if (eval(LED.attributes.led.value)) {
-          LED.style.opacity = ON;
-        } else {
-          LED.style.opacity = OFF;
-        }
-    });
+       width="90%" height="90%"
+       viewBox="0 0 1 1"
 
-    var pad = '';
-    if (minutes < 10) {
-        pad = '0';
-    }
+       style="stroke-linejoin:miter;
+              stroke:none;
+              stroke-width:1px;
+              fill:#000;
+             " >
 
-    document.title = (hours + ':' + pad + minutes);
-}
-
-var FPS = 60;
-var millisecondsPerFrame = 1000.0 / FPS;
-window.setInterval(draw, millisecondsPerFrame);
-
-</script>
-</head>
-<body bgcolor="#000"><center>
-<svg xmlns="http://www.w3.org/2000/svg"
-     xmlns:xlink="http://www.w3.org/1999/xlink"
-     version="1.1"
-
-     width="90%" height="90%"
-     viewBox="0 0 1 1"
-
-     style="stroke-linejoin:miter;
-            stroke:none;
-            stroke-width:1px;
-            fill:#000;
-            " >
-
-    <g fill="#600">
-        <circle class="LED" LED="hours % 12 >= 6" cx="0.125" cy="0.25" r="0.1125" />
-        <circle class="LED" LED="hours % 6 >= 3" cx="0.375" cy="0.25" r="0.1125" />
-        <circle class="LED" LED="hours % 3 == 2" cx="0.625" cy="0.25" r="0.1125" />
-        <circle class="LED" LED="hours % 3 == 1" cx="0.875" cy="0.25" r="0.1125" />
-    </g>
-    <g fill="#630">
-        <circle class="LED" LED="minutes % 60 >= 30" cx="0.125" cy="0.5" r="0.1125" />
-        <circle class="LED" LED="minutes % 30 >= 15" cx="0.375" cy="0.5" r="0.1125" />
-        <circle class="LED" LED="minutes % 15 >= 10" cx="0.625" cy="0.5" r="0.1125" />
-        <circle class="LED" LED="minutes % 15 >= 5" cx="0.875" cy="0.5" r="0.1125" />
-    </g>
-    <g fill="#060">
-        <circle class="LED" LED="minutes % 5 == 4" cx="0.125" cy="0.75" r="0.1125" />
-        <circle class="LED" LED="minutes % 5 >= 3" cx="0.375" cy="0.75" r="0.1125" />
-        <circle class="LED" LED="minutes % 5 >= 2" cx="0.625" cy="0.75" r="0.1125" />
-        <circle class="LED" LED="minutes % 5 >= 1" cx="0.875" cy="0.75" r="0.1125" />
-    </g>
-
-</svg>
-</center></body>
+        <g fill="#600">
+          <circle class="LED" LED="hours % 12 >= 6" cx="0.125" cy="0.25" r="0.1125" />
+          <circle class="LED" LED="hours % 6 >= 3" cx="0.375" cy="0.25" r="0.1125" />
+          <circle class="LED" LED="hours % 3 == 2" cx="0.625" cy="0.25" r="0.1125" />
+          <circle class="LED" LED="hours % 3 == 1" cx="0.875" cy="0.25" r="0.1125" />
+        </g>
+        <g fill="#630">
+          <circle class="LED" LED="minutes % 60 >= 30" cx="0.125" cy="0.5" r="0.1125" />
+          <circle class="LED" LED="minutes % 30 >= 15" cx="0.375" cy="0.5" r="0.1125" />
+          <circle class="LED" LED="minutes % 15 >= 10" cx="0.625" cy="0.5" r="0.1125" />
+          <circle class="LED" LED="minutes % 15 >= 5" cx="0.875" cy="0.5" r="0.1125" />
+        </g>
+        <g fill="#060">
+          <circle class="LED" LED="minutes % 5 == 4" cx="0.125" cy="0.75" r="0.1125" />
+          <circle class="LED" LED="minutes % 5 >= 3" cx="0.375" cy="0.75" r="0.1125" />
+          <circle class="LED" LED="minutes % 5 >= 2" cx="0.625" cy="0.75" r="0.1125" />
+          <circle class="LED" LED="minutes % 5 >= 1" cx="0.875" cy="0.75" r="0.1125" />
+        </g>
+      </svg>
+    </center>
+    <script type="text/javascript">
+      start(60);
+    </script>
+  </body>
 </html>

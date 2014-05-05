@@ -1,9 +1,14 @@
 function draw(){
   var now = new Date();
-  var hours = now.getHours() % 12;
+  var hours24 = now.getHours();
+  var hours = hours24 % 12;
   var minutes = now.getMinutes();
   var seconds = now.getSeconds();
   var milliseconds = now.getMilliseconds();
+
+  var smoothseconds = seconds + (milliseconds / 1000.0);
+  var smoothminutes = minutes + (smoothseconds / 60.0);
+  var smoothhours = hours + (smoothminutes / 60.0);
 
   var LEDs = document.getElementsByClassName("LED");
   [].forEach.call(LEDs, function(LED){

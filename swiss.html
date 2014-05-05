@@ -45,19 +45,19 @@
 
         <rect
          class="SPIN"
-         SPIN="(minutes + (seconds / 60.0)) * 6"
+         SPIN="smoothminutes * 6"
          SPINX="0.5" SPINY="0.5"
          x="0.49" y="0.07" width="0.02" height="0.5" />
 
         <rect
          class="SPIN"
-         SPIN="(hours + (minutes / 60.0) + (seconds / 3600.0)) * 30"
+         SPIN="smoothhours * 30"
          SPINX="0.5" SPINY="0.5"
          x="0.49" y="0.17" width="0.02" height="0.4" />
 
         <g
          class="SPIN"
-         SPIN="(seconds + (milliseconds / 1000.0)) * 6"
+         SPIN="smoothseconds * 6"
          SPINX="0.5" SPINY="0.5"
          fill="#c00">
           <rect id="" x="0.49" y="0.14" width="0.02" height="0.43" />

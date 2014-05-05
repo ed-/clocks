@@ -73,7 +73,7 @@
 
         <g
          class="SPIN"
-         SPIN="(hours + (minutes / 60.0) + (seconds / 3600.0)) * 30"
+         SPIN="smoothhours * 30"
          SPINX="0.5" SPINY="0.5"
          fill="#0ff">
           <use x="0" y="0" width="1" height="1" xlink:href="#lock" />
@@ -81,7 +81,7 @@
 
         <g
          class="SPIN"
-         SPIN="(minutes + (seconds / 60.0)) * 6"
+         SPIN="smoothminutes * 6"
          SPINX="0.5" SPINY="0.5"
          fill="#f0f">
           <use x="0" y="0" width="1" height="1" xlink:href="#lock" />
@@ -89,7 +89,7 @@
 
         <g
          class="SPIN"
-         SPIN="(seconds + (milliseconds / 1000.0)) * 6"
+         SPIN="smoothseconds * 6"
          SPINX="0.5" SPINY="0.5"
          fill="#ff0">
           <use x="0" y="0" width="1" height="1" xlink:href="#lock" />
